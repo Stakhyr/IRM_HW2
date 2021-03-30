@@ -9,11 +9,22 @@ namespace IRM_HW2
     {
         public static void ProcessDirectory(string targetDirectory) 
         {
+            Dictionary<int, string> BookDictionary = new Dictionary<int, string>();
+
             string[] fileEntries = Directory.GetFiles(targetDirectory);
-            foreach(var test in fileEntries) 
+           
+
+            for(int i=0; i<fileEntries.Length; i++) 
             {
-                Console.WriteLine(test);
+                var testc = new BookInformation(i, fileEntries[i]);
+            }
+
+            foreach (var test in BookDictionary)
+            {
+                Console.WriteLine($"Key {test.Key} and {test.Value} ");
             }
         }
+
+       
     }
 }
