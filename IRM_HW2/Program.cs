@@ -5,8 +5,13 @@ namespace IRM_HW2
     {
         static void Main(string[] args)
         {
+            //string targetDirectory = @"C:\Users\DS\Desktop\IRM_Books";
+
             string targetDirectory = @"C:\Users\DS\Desktop\IRM\HW1\Books";
-            FileCollectionProcessing.ProcessDirectory(targetDirectory);
+            string outputFilePath = @"C:\Users\DS\Desktop\IRM_Books\output\test.txt";
+            FileCollectionProcessing.ProcessDirectory(targetDirectory, outputFilePath);
+
+            //BooleanSeach.ParseQuery();
         }
     }
 }
