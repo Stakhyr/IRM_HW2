@@ -16,7 +16,7 @@ namespace IRM_HW2
             string[] words = entryQuery.Split(' ');
 
             var res1 = ParseWords(words);
-
+            
             var res2 = ParseSigns(words); 
 
             //foreach(var rf in res1) 
@@ -52,47 +52,44 @@ namespace IRM_HW2
             return resultList;
         }
 
-        public static void SeachQuery(Dictionary<string,List<int>> wordCollection) 
+        public static void SeachQuery(Dictionary<string,List<int>> wordCollection,string word) 
         {
+            List<int> valueList = new List<int>();
             var result = from words in wordCollection
-                         where words.Key.Contains("cl")
+                         where words.Key.Contains(word)
                          select words;
 
            
 
             foreach (var entry in result)
-                Console.WriteLine("{0} {1} ", entry.Key, string.Join(" ", entry.Value));
+                if(entry.Key== word) 
+                {
+                    foreach (var e in entry.Value) 
+                    {
+                        valueList.Add(e);
+                    }
+                }
+                //Console.WriteLine("{0} {1} ", entry.Key, string.Join(" ", entry.Value));
+
+            foreach(var t in valueList) 
+            {
+                Console.WriteLine(t);
+            }
         }
 
-        private static string []  TakeDictValue(Dictionary<string, List<int>> wordCollection, string word) 
-        {
-            string  booksIndex;
 
-            var result = from words in wordCollection
-                         where words.Key.Contains(word) 
-                         select words.Value;
-
-            booksIndex = string.Join(" ", result);
-
-            return new[] { booksIndex };
-        }
+        //public static void SeachQuery(Dictionary<string, List<int>> wordCollection)
+        //{
+        //    var result = from words in wordCollection
+        //                 where words.Key.Contains("tablecloth")
+        //                 select words;
 
 
-        public static void OrQuery(Dictionary<string, List<int>> wordCollection, string word1, string word2)
-        {
-            IEnumerable<string> res1 = TakeDictValue(wordCollection,word1);
-            IEnumerable<string> res2 = TakeDictValue(wordCollection, word2);
 
-
-            IEnumerable<string> auto = res1.Intersect(res2);
-            Console.WriteLine("Intersection of both the lists...");
-
-            foreach (var s in auto)
-                Console.WriteLine(s);
-
-
-        }
-
+        //    foreach (var entry in result)
+        //        Console.WriteLine("{0} {1} ", entry.Key, string.Join(" ", entry.Value));
+        //}
+    
 
 
       
@@ -103,5 +100,3 @@ namespace IRM_HW2
 
 
 
-//posts 0 1 4 5 6 7 9
-//canopy 0 1 3 4 7 8 9 10 

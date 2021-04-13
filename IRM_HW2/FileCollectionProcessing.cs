@@ -26,9 +26,10 @@ namespace IRM_HW2
                 if (i == fileEntries.Length - 1)
                 {
                     //var res = WordsBreaking.ProcessFile(fileName, result);
+                    BooleanSeach.SeachQuery(resultDictionary);
                     WriteToFile(resultDictionary, outputFile);
 
-                    BooleanSeach.OrQuery(removableStuff, "posts", "canopy");
+                    //BooleanSeach.OrQuery(removableStuff, "posts", "canopy");
                 }
             }
 
